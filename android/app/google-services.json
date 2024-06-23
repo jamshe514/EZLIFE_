@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "381972257384",
+    "project_id": "ezlife-7b7fc",
+    "storage_bucket": "ezlife-7b7fc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:381972257384:android:7507b76fa07032fde5f9dd",
+        "android_client_info": {
+          "package_name": "com.example.demo_project"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBcWkUoyV53DYmgUd9jfoPVAbC8x0Qpx2E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
