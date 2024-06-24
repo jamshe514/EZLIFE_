@@ -84,9 +84,11 @@ class _VisiterHistoryState extends State<VisiterHistory> {
                       }).toList();
 
                       final searchlist =
-                          helper.gustsearch.isEmpty ? guest : helper.gustsearch;
+                          helper.gustall.isEmpty 
+                          ? guest 
+                          : helper.gustsearch;
 
-                      return guest.isEmpty
+                      return searchlist.isEmpty
                           ? Center(
                               child: Text('NO GUST'),
                             )

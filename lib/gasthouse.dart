@@ -15,6 +15,7 @@ import 'package:demo_project/view/security/add_cab.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 class bookingpagegast extends StatefulWidget {
@@ -362,6 +363,8 @@ class _bookingpageState extends State<bookingpagegast> {
                                   backgroundColor:
                                       Color.fromARGB(255, 12, 184, 193)),
                               onPressed: () async {
+                                final formattedDate =
+                                    DateFormat('dd-MM-yyyy').format(selecdate);
                                 if (provide.roomno.text != null &&
                                     provide.selectedslot.toString() != null &&
                                     _selectedUserType.toString() != null &&
@@ -372,7 +375,7 @@ class _bookingpageState extends State<bookingpagegast> {
                                           BookModel(
                                             RoomeNo: provide.roomno.text,
                                             to: provide.selectedslot.toString(),
-                                            Date: selecdate.toString(),
+                                            Date: formattedDate,
                                             Type: _selectedUserType.toString(),
                                             selecflore: provide.selectedflore
                                                 .toString(),
@@ -383,6 +386,7 @@ class _bookingpageState extends State<bookingpagegast> {
                                           auth.currentUser!.uid)
                                       .then((value) {
                                     clear();
+                                    provide.roomno.clear();
                                   });
                                 } else {
                                   ScaffoldMessenger.of(context).showSnackBar(
@@ -424,7 +428,8 @@ class _bookingpageState extends State<bookingpagegast> {
         alignment: Alignment.center,
         width: 100,
         height: 50,
-        color: color,
+        decoration: BoxDecoration(
+            color: color, borderRadius: BorderRadius.circular(10)),
         child: Text(text),
       ),
     );

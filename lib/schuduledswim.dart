@@ -35,7 +35,7 @@ class _bookingsheduleState extends State<bookingshedule> {
                 decoration: InputDecoration(
                   filled: true,
                   fillColor: Colors.white,
-                  hintText: "Sloot ",
+                  hintText: "Sloot Time ",
                   prefixIcon: const Icon(Icons.search),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20),

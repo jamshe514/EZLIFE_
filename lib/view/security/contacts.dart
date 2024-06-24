@@ -89,11 +89,11 @@ class _ContactPageState extends State<ContactPage> {
                             e.data() as Map<String, dynamic>);
                       }).toList();
 
-                      final searchresult = helper.searchAllResident.isEmpty
+                      final searchresult = helper.residentsalll.isEmpty
                           ? list
                           : helper.searchAllResident;
 
-                      return list.isEmpty
+                      return searchresult.isEmpty
                           ? Center(
                               child: Text('NO RESIDENT'),
                             )

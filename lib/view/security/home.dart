@@ -1,6 +1,7 @@
 import 'package:demo_project/Emergency.dart';
 import 'package:demo_project/controller/helperprovider.dart';
 import 'package:demo_project/model/panicalert.dart';
+import 'package:demo_project/view/security/bookingdetails.dart';
 import 'package:demo_project/view/security/notificationsecurity.dart';
 import 'package:demo_project/view/security/panicalert.dart';
 import 'package:demo_project/view/security/roomvacency.dart';
@@ -107,6 +108,17 @@ class _securitysignupState extends State<securityhome> {
                           builder: (context) => PanicAlertHome()));
                 },
               ),
+              // ListTile(
+              //   leading: Icon(Icons.notifications_active_outlined),
+              //   title: Text("Booking Details"),
+              //   onTap: () {
+              //     Navigator.push(
+              //         context,
+              //         MaterialPageRoute(
+              //           builder: (context) => BokkingDetails(),
+              //         ));
+              //   },
+              // ),
               ListTile(
                 leading: Icon(Icons.logout),
                 title: Text("Log Out"),

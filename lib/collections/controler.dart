@@ -48,7 +48,7 @@ class Controller with ChangeNotifier {
           .set(bookModel.toJsone())
           .then((value) => cherrytoast(context, 'add booking '));
     }
-    cherrytoast(context, 'error!!');
+    // cherrytoast(context, 'error!!');
   }
 
   List<BookModel> bookModel = [];
@@ -65,7 +65,7 @@ class Controller with ChangeNotifier {
     search = List.from(bookModel);
     search = bookModel
         .where((element) =>
-            element.to.toLowerCase().contains(searchkey.toLowerCase()))
+            element.Date.toLowerCase().contains(searchkey.toLowerCase()))
         .toList();
     notifyListeners();
   }
@@ -89,7 +89,7 @@ class Controller with ChangeNotifier {
           .set(bookModel.toJsone())
           .then((value) => cherrytoast(context, 'add booking '));
     }
-    cherrytoast(context, 'error!!');
+    // cherrytoast(context, 'error!!');
   }
 
   List<BookModel> swimall = [];
@@ -106,7 +106,7 @@ class Controller with ChangeNotifier {
     swimsearch = List.from(swimall);
     swimsearch = swimall
         .where((element) =>
-            element.to.toLowerCase().contains(searchkey.toLowerCase()))
+            element.Date.toLowerCase().contains(searchkey.toLowerCase()))
         .toList();
     notifyListeners();
   }
@@ -130,7 +130,7 @@ class Controller with ChangeNotifier {
           .set(bookModel.toJsone())
           .then((value) => cherrytoast(context, 'add booking '));
     }
-    cherrytoast(context, 'error!!');
+    // cherrytoast(context, 'error!!');
   }
 
   List<BookModel> turfall = [];
@@ -147,7 +147,7 @@ class Controller with ChangeNotifier {
     turfsearch = List.from(turfall);
     turfsearch = turfall
         .where((element) =>
-            element.to.toLowerCase().contains(searchkey.toLowerCase()))
+            element.Date.toLowerCase().contains(searchkey.toLowerCase()))
         .toList();
     notifyListeners();
   }
@@ -171,7 +171,7 @@ class Controller with ChangeNotifier {
           .set(bookModel.toJsone())
           .then((value) => cherrytoast(context, 'add booking '));
     }
-    cherrytoast(context, 'error!!');
+    // cherrytoast(context, 'error!!');
   }
 
   List<BookModel> guesthouseall = [];
@@ -188,7 +188,7 @@ class Controller with ChangeNotifier {
     gustsearch = List.from(guesthouseall);
     gustsearch = guesthouseall
         .where((element) =>
-            element.to.toLowerCase().contains(searchkey.toLowerCase()))
+            element.Date.toLowerCase().contains(searchkey.toLowerCase()))
         .toList();
     notifyListeners();
   }
@@ -212,7 +212,7 @@ class Controller with ChangeNotifier {
           .set(bookModel.toJsone())
           .then((value) => cherrytoast(context, 'add booking '));
     }
-    cherrytoast(context, 'error!!');
+    // cherrytoast(context, 'error!!');
   }
 
   List<BookModel> gymall = [];
@@ -229,7 +229,7 @@ class Controller with ChangeNotifier {
     gymsearch = List.from(gymall);
     gymsearch = gymall
         .where((element) =>
-            element.to.toLowerCase().contains(searchkey.toLowerCase()))
+            element.Date.toLowerCase().contains(searchkey.toLowerCase()))
         .toList();
     notifyListeners();
   }
@@ -253,7 +253,7 @@ class Controller with ChangeNotifier {
           .set(bookModel.toJsone())
           .then((value) => cherrytoast(context, 'add booking '));
     }
-    cherrytoast(context, 'error!!');
+    // cherrytoast(context, 'error!!');
   }
 
   List<BookModel> allCare = [];
@@ -270,7 +270,7 @@ class Controller with ChangeNotifier {
     caresearch = List.from(allCare);
     caresearch = allCare
         .where((element) =>
-            element.to.toLowerCase().contains(searchkey.toLowerCase()))
+            element.Date.toLowerCase().contains(searchkey.toLowerCase()))
         .toList();
     notifyListeners();
   }

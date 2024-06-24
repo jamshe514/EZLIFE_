@@ -1,9 +1,5 @@
 import 'dart:developer';
-import 'dart:math';
-import 'dart:ui';
 
-import 'package:booking_calendar/booking_calendar.dart';
-import 'package:cherry_toast/cherry_toast.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:demo_project/bottom.dart';
 import 'package:demo_project/collections/controler.dart';
@@ -20,6 +16,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 class bookingpageparty extends StatefulWidget {
@@ -373,11 +370,9 @@ class _bookingpageState extends State<bookingpageparty> {
                             decoration: InputDecoration(
                               // filled: true,
                               hintText: selecdate != null
-                                  ? "${selecdate!.day}/${selecdate!.month}/${selecdate!.year}"
+                                  ? "${selecdate!.day.toString().padLeft(2, '0')}/${selecdate!.month.toString().padLeft(2, '0')}/${selecdate!.year}"
                                   : "Date",
-                              // hintText: " Name",
-                              // prefixIcon: Icon(Icons.person),
-                              // fillColor: Color(0xFFF3EEEE),
+
                               suffixIcon: IconButton(
                                 onPressed: () async {
                                   final DateTime? date = await showDatePicker(
@@ -407,10 +402,10 @@ class _bookingpageState extends State<bookingpageparty> {
                           onChanged: (value) {
                             setState(() {
                               _selectedUserType = value.toString();
-                              // log(_selectedUserType.toString());
                             });
                           },
                         ),
+
                         Padding(
                           padding: const EdgeInsets.only(top: 30),
                           child: SizedBox(
@@ -421,6 +416,8 @@ class _bookingpageState extends State<bookingpageparty> {
                                   backgroundColor:
                                       Color.fromARGB(255, 12, 184, 193)),
                               onPressed: () async {
+                                final formattedDate =
+                                    DateFormat('dd-MM-yyyy').format(selecdate);
                                 if (provide.roomno.text != null &&
                                     provide.selectedslot.toString() != null &&
                                     _selectedUserType.toString() != null &&
@@ -431,7 +428,7 @@ class _bookingpageState extends State<bookingpageparty> {
                                           BookModel(
                                             RoomeNo: provide.roomno.text,
                                             to: provide.selectedslot.toString(),
-                                            Date: selecdate.toString(),
+                                            Date: formattedDate,
                                             Type: _selectedUserType.toString(),
                                             selecflore: provide.selectedflore
                                                 .toString(),
@@ -442,6 +439,7 @@ class _bookingpageState extends State<bookingpageparty> {
                                           auth.currentUser!.uid)
                                       .then((value) {
                                     clear();
+                                    provide.roomno.clear();
                                   });
                                 } else {
                                   ScaffoldMessenger.of(context).showSnackBar(
@@ -483,7 +481,8 @@ class _bookingpageState extends State<bookingpageparty> {
         alignment: Alignment.center,
         width: 100,
         height: 50,
-        color: color,
+        decoration: BoxDecoration(
+            color: color, borderRadius: BorderRadius.circular(10)),
         child: Text(text),
       ),
     );
