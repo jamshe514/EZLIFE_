@@ -7,6 +7,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:demo_project/authentication/login.dart';
 import 'package:demo_project/bottom.dart';
 import 'package:demo_project/forgetpassword.dart';
+import 'package:demo_project/model/Bookingupdates.dart';
 import 'package:demo_project/model/Roomvacency.dart';
 import 'package:demo_project/model/bookmodel.dart';
 import 'package:demo_project/model/comment.dart';
@@ -28,6 +29,7 @@ import 'package:demo_project/utils/string.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -82,6 +84,17 @@ class HelperProvider with ChangeNotifier {
   //
 
   // set
+
+  Future checkuserexist(
+      florenumer, roomno, GuestModel model, BuildContext context) async {
+    final snapshot = await db.collection(florenumer).doc(roomno).get();
+
+    if (snapshot.exists) {
+      addGuest(model);
+    } else {
+      cherryinfo(context, 'Note User Found');
+    }
+  }
 
   Future addGuest(GuestModel guestModel) async {
     final snapshot = db.collection('Guest').doc();
@@ -266,6 +279,46 @@ class HelperProvider with ChangeNotifier {
     }
   }
 
+  Uint8List webimage = Uint8List(8);
+  String? weburl;
+
+  Future<void> imageAdmin() async {
+    final ImagePicker picker = ImagePicker();
+    final XFile? returnimage =
+        await picker.pickImage(source: ImageSource.gallery);
+
+    if (returnimage != null) {
+      var f = await returnimage.readAsBytes();
+
+      webimage = f;
+
+      SettableMetadata metadata = SettableMetadata(contentType: 'image/jpeg');
+      final time = TimeOfDay.now().toString();
+
+      UploadTask uploadTask = FirebaseStorage.instance
+          .ref()
+          .child('adminaddresiders/$time')
+          .putData(webimage, metadata);
+      TaskSnapshot snapshot = await uploadTask;
+
+      weburl = await snapshot.ref.getDownloadURL();
+      notifyListeners();
+    }
+
+    // final pickedimage =
+    //     await ImagePicker().pickImage(source: ImageSource.gallery);
+    // if (pickedimage == null) return;
+    // // setState(() {
+    // SelectedImage = File(pickedimage.path);
+    // notifyListeners();
+    // // });
+    // SettableMetadata metadata = SettableMetadata(contentType: 'image/jpeg');
+    // final currenttime = TimeOfDay.now().toString();
+
+    // url = await snapshot.ref.getDownloadURL();
+    // // notifyListeners();
+  }
+
   File? SelectedImage;
   String? url;
 
@@ -304,17 +357,17 @@ class HelperProvider with ChangeNotifier {
           .set(floremodel.toJsone(snapshot.id))
           .then((value) {
         Registration(context, passwordcontroller.text, emailcontroller.text,
-                url, selectedUserType)
+                weburl, selectedUserType)
             .then((value) {
           clearcontroller();
-          Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(
-              builder: (context) => bottomnavipage(
-                indexnum: 0,
-              ),
-            ),
-          );
+          // Navigator.pushReplacement(
+          //   context,
+          //   MaterialPageRoute(
+          //     builder: (context) => bottomnavipage(
+          //       indexnum: 0,
+          //     ),
+          //   ),
+          // );
         });
       });
     }
@@ -654,7 +707,7 @@ class HelperProvider with ChangeNotifier {
 
   Future uploadBill(UploadCharge uploadCharge, uid) async {
     final snapshot =
-        db.collection('Register').doc(uid).collection('BillUser').doc();
+        db.collection('Register').doc(uid).collection('BillUser').doc(uid);
     snapshot.set(uploadCharge.tojsone(snapshot.id));
   }
 
@@ -768,5 +821,19 @@ class HelperProvider with ChangeNotifier {
             element.Date.toLowerCase().contains(searchkey.toLowerCase()))
         .toList();
     notifyListeners();
+  }
+
+  Future paymentStatusUpload(uid, Paymentstatus paymentstatus) async {
+    final snapshot = db.collection('BillPayment').doc();
+
+    snapshot.set(paymentstatus.toJsone());
+  }
+
+  Stream<QuerySnapshot> getPyamentstatus() {
+    return db.collection('BillPayment').snapshots();
+  }
+
+  Future deleteBill(uid) async {
+    db.collection('Register').doc(uid).collection('BillUser').doc(uid).delete();
   }
 }

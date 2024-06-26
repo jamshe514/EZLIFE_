@@ -4,12 +4,14 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:demo_project/controller/helperprovider.dart';
 import 'package:demo_project/controller/paymentcontroller.dart';
 import 'package:demo_project/helpers.dart';
+import 'package:demo_project/model/Bookingupdates.dart';
 import 'package:demo_project/model/uploadcharge.dart';
 import 'package:demo_project/myhomepage.dart';
 import 'package:demo_project/payment_2.dart';
 import 'package:demo_project/payment_3.dart';
 import 'package:demo_project/utils/string.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 class payment_first extends StatefulWidget {
@@ -22,6 +24,7 @@ class payment_first extends StatefulWidget {
 class _payment_firstState extends State<payment_first> {
   @override
   Widget build(BuildContext context) {
+    final helper = Provider.of<HelperProvider>(context);
     return Scaffold(
       appBar: AppBar(
         title: Center(child: Text("payment")),
@@ -117,6 +120,7 @@ class _payment_firstState extends State<payment_first> {
                                         Text('=='),
                                         Text(
                                           list[index].monthlerent.toString(),
+                                          style: TextStyle(fontSize: 25),
                                         ),
                                       ],
                                     ),
@@ -150,17 +154,26 @@ class _payment_firstState extends State<payment_first> {
                                         ),
                                       ],
                                     ),
+                                    SizedBox(
+                                      width: ResHelper.h(context) * .030,
+                                    ),
                                     Row(
+                                      mainAxisAlignment: MainAxisAlignment.end,
                                       children: [
-                                        Padding(
-                                          padding: EdgeInsets.only(
-                                            left: ResHelper.w(context) * .70,
-                                          ),
-                                          child: Text(
-                                            total,
-                                          ),
+                                        Text('TOTTAL'),
+                                        SizedBox(
+                                          width: 10,
+                                        ),
+                                        Text(
+                                          total,
+                                        ),
+                                        SizedBox(
+                                          width: ResHelper.h(context) * .010,
                                         ),
                                       ],
+                                    ),
+                                    SizedBox(
+                                      height: ResHelper.h(context) * .010,
                                     )
                                   ],
                                 ),
@@ -190,12 +203,25 @@ class _payment_firstState extends State<payment_first> {
             ),
             GestureDetector(
               onTap: () async {
-                // await PaymentController().appopen().then((value) async {
-                //   var transaction = await PaymentController()
-                //       .initiateTransaction(amout: 10, recivername: 'fayis')
-                //       .then((value) {});
+                helper
+                    .paymentStatusUpload(
+                  auth.currentUser!.uid,
+                  Paymentstatus(
+                      name: auth.currentUser!.email.toString(),
+                      uid: auth.currentUser!.uid,
+                      status: 'SUCCES',
+                      date: date),
+                )
+                    .then((value) {
+                  cherrytoast(context, 'Payment Succes');
+                  helper.deleteBill(auth.currentUser!.uid);
+                });
 
-                // });
+                //// ith muthal ann payent
+                ///
+                ///
+                ///
+
                 await PaymentController().appopen().then((value) async {
                   var transaction = await PaymentController()
                       .initiateTransaction(amout: 10, recivername: 'ezlife')
@@ -204,6 +230,8 @@ class _payment_firstState extends State<payment_first> {
                     //     value.status == UpiPaymentStatus.SUCCESS;
                   });
                 });
+
+                ////// ith vare
               },
               child: Container(
                 alignment: Alignment.center,

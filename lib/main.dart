@@ -1,11 +1,14 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:demo_project/collections/controler.dart';
 import 'package:demo_project/controller/paymentcontroller.dart';
+import 'package:demo_project/view/Admin/addresidenters.dart';
 import 'package:demo_project/view/Admin/home.dart';
 import 'package:demo_project/view/Admin/login.dart';
 import 'package:demo_project/view/Admin/uploadrent.dart';
 import 'package:demo_project/view/Admin/vaccencyupload.dart';
+import 'package:demo_project/view/Admin/viewrooms.dart';
 import 'package:demo_project/view/Admin/viewsecurity.dart';
 import 'package:demo_project/bottom.dart';
 import 'package:demo_project/businesslogic/firebase_options.dart';
@@ -59,8 +62,11 @@ class MyApp extends StatelessWidget {
             useMaterial3: true,
           ),
           home:
-              //  Uploadvaccency()
-              UserType()),
+              //  ViewRoom(),
+              // AdminHomePage()
+          // signup()
+          UserType(),
+          ),
     );
   }
 }
@@ -79,22 +85,25 @@ class UserType extends StatelessWidget {
             children: [
               Column(
                 children: [
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => loginPage(),
-                          ));
-                    },
-                    child: Container(
-                      alignment: Alignment.center,
-                      width: ResHelper.w(context) * .50,
-                      height: ResHelper.h(context) * .10,
-                      color: Colors.red,
-                      child: Text('User'),
+                  if (kIsWeb != true)
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => loginPage(),
+                            ));
+                      },
+                      child: Container(
+                        alignment: Alignment.center,
+                        width: ResHelper.w(context) * .50,
+                        height: ResHelper.h(context) * .10,
+                        decoration: BoxDecoration(
+                            color: Colors.red,
+                            borderRadius: BorderRadius.circular(18)),
+                        child: Text('User'),
+                      ),
                     ),
-                  ),
                   SizedBox(
                     height: ResHelper.h(context) * .10,
                   ),
@@ -114,7 +123,9 @@ class UserType extends StatelessWidget {
                         alignment: Alignment.center,
                         width: ResHelper.w(context) * .50,
                         height: ResHelper.h(context) * .10,
-                        color: Colors.red,
+                        decoration: BoxDecoration(
+                            color: Colors.red,
+                            borderRadius: BorderRadius.circular(18)),
                         child: Text('admin'),
                       ),
                     ),

@@ -83,10 +83,10 @@ class _bookingpageState extends State<bookingpagecare> {
   final formkey = GlobalKey<FormState>();
 
   final flore = {
-    'Flore 1',
-    'Flore 2',
-    'Flore 3',
-    'Flore 4',
+       'Floor 1',
+    'Floor 2',
+    'Floor 3',
+    'Floor 4',
   };
 
   @override

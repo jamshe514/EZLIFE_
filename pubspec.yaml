@@ -45,7 +45,7 @@ dependencies:
   upi_india: ^3.0.1
   url_launcher: ^6.3.0
   booking_calendar: ^1.1.10
- 
+  file_picker: ^5.0.1
 dev_dependencies:
 
   # The "flutter_lints" package below contaibns a set of recommended lints to

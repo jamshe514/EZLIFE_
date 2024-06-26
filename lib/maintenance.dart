@@ -47,10 +47,10 @@ class _maintenanceState extends State<maintenance> {
     final privder = Provider.of<HelperProvider>(context, listen: false);
 
     final flore = {
-      'Flore 1',
-      'Flore 2',
-      'Flore 3',
-      'Flore 4',
+        'Floor 1',
+    'Floor 2',
+    'Floor 3',
+    'Floor 4',
     };
 
     final provider = Provider.of<HelperProvider>(context);

@@ -273,28 +273,28 @@ class _login extends State<loginPage> {
                         ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(left: 125, top: 25),
+                  padding: const EdgeInsets.only(left: 50, top: 25),
                   child: Row(
                     children: [
                       const Text(
-                        "Need account?",
+                        "Need account?   Go to Your Near Apartment ",
                         style: TextStyle(color: Colors.black),
                       ),
-                      TextButton(
-                          onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => signup()));
-                          },
-                          child: const Text(
-                            "SignUp",
-                            style: TextStyle(
-                                color: Color.fromRGBO(32, 57, 199, 1),
-                                decoration: TextDecoration.underline,
-                                decorationColor:
-                                    Color.fromRGBO(32, 57, 199, 1)),
-                          ))
+                      // TextButton(
+                      //     onPressed: () {
+                      //       Navigator.push(
+                      //           context,
+                      //           MaterialPageRoute(
+                      //               builder: (context) => signup()));
+                      //     },
+                      //     child: const Text(
+                      //       "SignUp",
+                      //       style: TextStyle(
+                      //           color: Color.fromRGBO(32, 57, 199, 1),
+                      //           decoration: TextDecoration.underline,
+                      //           decorationColor:
+                      //               Color.fromRGBO(32, 57, 199, 1)),
+                      //     ))
                     ],
                   ),
                 ),

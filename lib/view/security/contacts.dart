@@ -136,9 +136,9 @@ class _ContactPageState extends State<ContactPage> {
                                                 Text(
                                                     'PHONE :${searchresult[index].phonenumber}'),
                                                 Text(
-                                                    'ROOM no :${searchresult[index].rooomnumber}'),
+                                                    'ROOM NO :${searchresult[index].rooomnumber}'),
                                                 Text(
-                                                    'Floreno: ${searchresult[index].florenumber}'),
+                                                    'FlOOR NO: ${searchresult[index].florenumber}'),
                                               ],
                                             ),
                                           ),

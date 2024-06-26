@@ -32,7 +32,12 @@ class _add_cabState extends State<add_guest> {
     final wdith = MediaQuery.of(context).size.width;
     final hright = MediaQuery.of(context).size.height;
 
-    final flore = {'Flore 1', 'Flore 2', 'Flore 3', 'Flore 4', 'Flore 5'};
+    final flore = {
+      'Floor 1',
+      'Floor 2',
+      'Floor 3',
+      'Floor 4',
+    };
 
     final hel = Provider.of<HelperProvider>(context);
 
@@ -158,9 +163,15 @@ class _add_cabState extends State<add_guest> {
                       ),
                       keyboardType: TextInputType.number,
                       validator: (value) {
-                        if (value!.isEmpty) {
-                          return " please the  room no";
+                        if (value == null || value.isEmpty) {
+                          return 'This field is required';
                         }
+
+                        final intValue = int.tryParse(value);
+                        if (intValue == null || intValue < 1 || intValue > 50) {
+                          return 'room only 50 ';
+                        }
+
                         return null;
                       },
                     ),
@@ -254,29 +265,31 @@ class _add_cabState extends State<add_guest> {
                                 onPressed: () {
                                   if (_formkey.currentState!.validate()) {
                                     if (hel.url != null) {
-                                      helper
-                                          .addGuest(
-                                        GuestModel(
-                                          guestname: usernamecontroller.text,
-                                          phonenumber: phonecontroller.text,
-                                          roomnumber: roomcontroller.text,
-                                          nofpeople: noofpecontroller.text,
-                                          vehiclenumber:
-                                              vehiclenocontroller.text,
-                                          image: hel.url.toString(),
-                                          status: 'Pending',
-                                          florenumber:
-                                              hel.selecteedfloresec.toString(),
-                                          typeguest:
-                                              hel.seelctedtype.toString(),
-                                          date: date,
-                                        ),
-                                      )
-                                          .then((value) {
-                                        cherrytoast(
-                                            context, 'Add guest succes');
-                                        clearcontrool();
-                                      });
+                                      hel
+                                          .checkuserexist(
+                                              helper.selecteedfloresec,
+                                              roomcontroller.text,
+                                              GuestModel(
+                                                guestname:
+                                                    usernamecontroller.text,
+                                                phonenumber:
+                                                    phonecontroller.text,
+                                                roomnumber: roomcontroller.text,
+                                                nofpeople:
+                                                    noofpecontroller.text,
+                                                vehiclenumber:
+                                                    vehiclenocontroller.text,
+                                                image: hel.url.toString(),
+                                                status: 'Pending',
+                                                florenumber: hel
+                                                    .selecteedfloresec
+                                                    .toString(),
+                                                typeguest:
+                                                    hel.seelctedtype.toString(),
+                                                date: date,
+                                              ),
+                                              context)
+                                          .then((value) => clearcontrool());
                                     } else {
                                       ScaffoldMessenger.of(context)
                                           .showSnackBar(SnackBar(
@@ -307,3 +320,31 @@ class _add_cabState extends State<add_guest> {
     vehiclenocontroller.clear();
   }
 }
+
+
+
+
+
+// helper
+//                                           .addGuest(
+//                                         GuestModel(
+//                                           guestname: usernamecontroller.text,
+//                                           phonenumber: phonecontroller.text,
+//                                           roomnumber: roomcontroller.text,
+//                                           nofpeople: noofpecontroller.text,
+//                                           vehiclenumber:
+//                                               vehiclenocontroller.text,
+//                                           image: hel.url.toString(),
+//                                           status: 'Pending',
+//                                           florenumber:
+//                                               hel.selecteedfloresec.toString(),
+//                                           typeguest:
+//                                               hel.seelctedtype.toString(),
+//                                           date: date,
+//                                         ),
+//                                       )
+//                                           .then((value) {
+//                                         cherrytoast(
+//                                             context, 'Add guest succes');
+//                                         clearcontrool();
+//                                       });

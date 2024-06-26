@@ -1,6 +1,3 @@
-import 'dart:developer';
-import 'dart:math';
-
 import 'package:cherry_toast/cherry_toast.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:demo_project/bottom.dart';
@@ -81,10 +78,10 @@ class _bookingpageState extends State<bookingpagetruf> {
   final formkey = GlobalKey<FormState>();
 
   final flore = {
-    'Flore 1',
-    'Flore 2',
-    'Flore 3',
-    'Flore 4',
+    'Floor 1',
+    'Floor 2',
+    'Floor 3',
+    'Floor 4',
   };
 
   @override
@@ -427,7 +424,7 @@ class _bookingpageState extends State<bookingpagetruf> {
       onTap: ontap,
       child: Container(
         alignment: Alignment.center,
-        width: 120,
+        width: 110,
         height: 50,
         decoration: BoxDecoration(
             color: color, borderRadius: BorderRadius.circular(10)),

@@ -102,7 +102,7 @@ class _visitorsState extends State<visitors_view> {
                                                       Text(
                                                           'NO:${guest[index].roomnumber}'),
                                                       Text(
-                                                        'FLOREno:${guest[index].florenumber}',
+                                                        'FLOOR NO:${guest[index].florenumber}',
                                                       ),
                                                       // Text(
                                                       //   guest[index].date,

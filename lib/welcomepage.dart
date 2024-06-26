@@ -69,22 +69,22 @@ class _DemoState extends State<Demo> {
                   SizedBox(
                     height: 20,
                   ),
-                  Center(
-                    child: SizedBox(
-                        height: 50,
-                        width: 150,
-                        child: ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                                backgroundColor: Color.fromARGB(255, 9, 9, 8),
-                                foregroundColor: Colors.white),
-                            onPressed: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => signup()));
-                            },
-                            child: Text('Sign Up'))),
-                  ),
+                  // Center(
+                  //   child: SizedBox(
+                  //       height: 50,
+                  //       width: 150,
+                  //       child: ElevatedButton(
+                  //           style: ElevatedButton.styleFrom(
+                  //               backgroundColor: Color.fromARGB(255, 9, 9, 8),
+                  //               foregroundColor: Colors.white),
+                  //           onPressed: () {
+                  //             Navigator.push(
+                  //                 context,
+                  //                 MaterialPageRoute(
+                  //                     builder: (context) => signup()));
+                  //           },
+                  //           child: Text('Sign Up'))),
+                  // ),
                 ]),
           )),
     );

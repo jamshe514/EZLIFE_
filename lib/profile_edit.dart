@@ -140,7 +140,7 @@ class _profile_editState extends State<profile_edit> {
     String id = auth.currentUser!.uid;
     return Scaffold(
         appBar: AppBar(
-          title: Center(child: Text("profile ")),
+          title: Center(child: Text("PROFILE EDIT ")),
           backgroundColor: Color.fromARGB(44, 24, 255, 216),
         ),
         body: Container(
@@ -170,7 +170,7 @@ class _profile_editState extends State<profile_edit> {
                     // String room = data['room'];
                     // String imageurl = data['imageurl'];
 
-                    final data = snapshot.data;
+                    // final data = snapshot.data;
 
                     final datahel = helper.usermodel;
 
@@ -193,7 +193,8 @@ class _profile_editState extends State<profile_edit> {
                                       CircleAvatar(
                                         radius: 70,
                                         backgroundImage: NetworkImage(
-                                            datahel!.userprofileimg),
+                                          datahel!.userprofileimg,
+                                        ),
                                       ),
                                     ],
                                   ),

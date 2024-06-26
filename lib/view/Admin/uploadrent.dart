@@ -1,8 +1,10 @@
 import 'package:demo_project/controller/helperprovider.dart';
 import 'package:demo_project/model/uploadcharge.dart';
 import 'package:demo_project/utils/string.dart';
+import 'package:demo_project/view/Admin/paymentStatusview.dart';
 import 'package:demo_project/view/security/add_cab.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 
 class rent extends StatefulWidget {
@@ -14,10 +16,10 @@ class rent extends StatefulWidget {
 
 class _rentState extends State<rent> {
   final flore = {
-    'Flore 1',
-    'Flore 2',
-    'Flore 3',
-    'Flore 4',
+    'Floor 1',
+    'Floor 2',
+    'Floor 3',
+    'Floor 4',
   };
   final TextEditingController monthlyrent = TextEditingController();
   final TextEditingController maintaine = TextEditingController();
@@ -37,6 +39,34 @@ class _rentState extends State<rent> {
         child: Image.asset(
           'assets/bg.jpg',
           fit: BoxFit.cover,
+        ),
+      ),
+      GestureDetector(
+        onTap: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => PaymentStatusView(),
+              ));
+        },
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Container(
+            alignment: Alignment.center,
+            width: 160,
+            height: 60,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              color: Colors.grey,
+            ),
+            child: Text(
+              'VIEW PAYMENT STATUS',
+              style: TextStyle(
+                fontSize: 11,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
         ),
       ),
       Padding(
@@ -197,7 +227,8 @@ class _rentState extends State<rent> {
                               int maitaine = int.parse(maintaine.text);
                               int utilit = int.parse(utility.text);
 
-                              await helper.uploadBill(
+                              await helper
+                                  .uploadBill(
                                 UploadCharge(
                                   monthlerent: mothrent,
                                   maintance: maitaine,
@@ -206,10 +237,14 @@ class _rentState extends State<rent> {
                                   room: roomcontrl.text,
                                 ),
                                 useruid.text,
-                              );
+                              )
+                                  .then((value) {
+                                clear();
+                                cherryinfo(context, 'add bill succes');
+                              });
                               cherrytoast(context, 'add bill succes');
                             }
-                            cherryinfo(context, 'Add Bill Succes');
+                            // cherryinfo(context, 'error');
                           },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Color.fromARGB(255, 40, 135, 125),
@@ -228,5 +263,12 @@ class _rentState extends State<rent> {
         ),
       )
     ]));
+  }
+
+  clear() {
+    useruid.clear();
+    monthlyrent.clear();
+    maintaine.clear();
+    utility.clear();
   }
 }
