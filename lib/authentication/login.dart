@@ -101,7 +101,7 @@ class _login extends State<loginPage> {
         // Show a success message
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
-            content: Text("Registration Success"),
+            content: Text("Login Success"),
           ),
         );
 

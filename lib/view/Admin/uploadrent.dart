@@ -37,7 +37,7 @@ class _rentState extends State<rent> {
         body: Stack(children: [
       Positioned.fill(
         child: Image.asset(
-          'assets/bg.jpg',
+          'assets/single flore.jpg',
           fit: BoxFit.cover,
         ),
       ),
@@ -175,19 +175,22 @@ class _rentState extends State<rent> {
                       width: ResHelper.w(context) * .2,
                       child: Consumer<HelperProvider>(
                         builder: (context, helper, child) {
-                          return DropdownButtonFormField(
-                            hint: Text('Select flore'),
-                            decoration:
-                                InputDecoration(border: OutlineInputBorder()),
-                            items: flore.map((e) {
-                              return DropdownMenuItem(
-                                value: e.toString(),
-                                child: Text(e),
-                              );
-                            }).toList(),
-                            onChanged: (value) {
-                              helper.selectedflorebil(value);
-                            },
+                          return Container(
+                            color: Colors.white,
+                            child: DropdownButtonFormField(
+                              hint: Text('Select flore'),
+                              decoration:
+                                  InputDecoration(border: OutlineInputBorder()),
+                              items: flore.map((e) {
+                                return DropdownMenuItem(
+                                  value: e.toString(),
+                                  child: Text(e),
+                                );
+                              }).toList(),
+                              onChanged: (value) {
+                                helper.selectedflorebil(value);
+                              },
+                            ),
                           );
                         },
                       ),
@@ -201,6 +204,9 @@ class _rentState extends State<rent> {
                         autovalidateMode: AutovalidateMode.onUserInteraction,
                         controller: roomcontrl,
                         decoration: InputDecoration(
+                          fillColor: Colors.white,
+                          filled: true,
+                          hintText: ' ROOM NO:',
                           border: OutlineInputBorder(),
                         ),
                         validator: (value) {

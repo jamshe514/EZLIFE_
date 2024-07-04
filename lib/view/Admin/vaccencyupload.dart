@@ -8,6 +8,7 @@ import 'package:demo_project/controller/helperprovider.dart';
 import 'package:demo_project/utils/string.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 
@@ -92,6 +93,9 @@ class Uploadvaccency extends StatelessWidget {
                         width: ResHelper.w(context) * .3,
                         height: ResHelper.h(context) * .2,
                         child: TextFormField(
+                          inputFormatters: [
+                            LengthLimitingTextInputFormatter(2)
+                          ],
                           keyboardType: TextInputType.number,
                           controller: florenumber,
                           decoration: InputDecoration(
@@ -115,10 +119,7 @@ class Uploadvaccency extends StatelessWidget {
                         builder: (context, helper, child) {
                           return GestureDetector(
                             onTap: () {
-                              if (formkey.currentState!.validate() &&
-                                  helper.selectflorevacancy
-                                      .toString()
-                                      .isEmpty) {
+                              if (formkey.currentState!.validate()) {
                                 helper
                                     .addRoomvaceny(
                                   RoomVacencyModel(

@@ -120,18 +120,20 @@ class _ContactPageState extends State<Securitycontacts> {
                                             children: [
                                               Padding(
                                                 padding: const EdgeInsets.only(
-                                                    left: 20),
+                                                    left: 10),
                                                 child: Container(
                                                   width: 60,
                                                   height: 60,
                                                   decoration: BoxDecoration(
-                                                      shape: BoxShape.circle,
-                                                      image: DecorationImage(
-                                                          fit: BoxFit.fill,
-                                                          image: NetworkImage(
-                                                            searchlist[index]
-                                                                .securityprofile,
-                                                          ))),
+                                                    shape: BoxShape.circle,
+                                                    image: DecorationImage(
+                                                      fit: BoxFit.fill,
+                                                      image: NetworkImage(
+                                                        searchlist[index]
+                                                            .securityprofile,
+                                                      ),
+                                                    ),
+                                                  ),
                                                 ),
                                               ),
                                               Padding(
@@ -144,11 +146,14 @@ class _ContactPageState extends State<Securitycontacts> {
                                                       CrossAxisAlignment.start,
                                                   children: [
                                                     Text(
-                                                        'Email:${searchlist[index].securityEmail}'),
+                                                      'Email:${searchlist[index].securityEmail}',
+                                                      style: TextStyle(
+                                                          fontSize: 10),
+                                                    ),
                                                     Text(
                                                         'NO:${searchlist[index].securityphonenumber}'),
                                                     Text(
-                                                        'SECURITYNAME:${searchlist[index].securityName}'),
+                                                        'NAME:${searchlist[index].securityName}'),
                                                   ],
                                                 ),
                                               ),

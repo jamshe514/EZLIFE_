@@ -34,7 +34,7 @@ class _AdminLoginPageState extends State<AdminLoginPage> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(right: 750),
+                      padding: const EdgeInsets.only(right: 200),
                       child: Text(
                         'Login In',
                         style: TextStyle(

@@ -12,7 +12,11 @@ class FeedbackViewAdmin extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
+        body: Container(
+      decoration: BoxDecoration(
+          image: DecorationImage(
+              fit: BoxFit.fill, image: AssetImage('assets/view.jpg'))),
+      child: SingleChildScrollView(
         child: Column(
           children: [
             SizedBox(
@@ -24,7 +28,9 @@ class FeedbackViewAdmin extends StatelessWidget {
                 Text(
                   'ALL FEED BACK',
                   style: TextStyle(
-                    fontSize: ResHelper.w(context) * .020,
+                    color: Colors.greenAccent,
+                    fontWeight: FontWeight.bold,
+                    fontSize: ResHelper.w(context) * .050,
                   ),
                 ),
               ],
@@ -56,11 +62,18 @@ class FeedbackViewAdmin extends StatelessWidget {
                                   padding: EdgeInsets.symmetric(
                                       horizontal: ResHelper.w(context) * .20),
                                   child: Container(
-                                    width: ResHelper.w(context) * .20,
+                                    alignment: Alignment.center,
+                                    width: ResHelper.w(context) * .10,
                                     height: ResHelper.h(context) * .20,
-                                    color: Colors.grey,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(
+                                          ResHelper.w(context) * .010),
+                                      color: Colors.blueGrey,
+                                    ),
                                     child: Row(
-                                      children: [Text(list[index].msg)],
+                                      children: [
+                                        Text('MESSAGE :${list[index].msg}')
+                                      ],
                                     ),
                                   ),
                                 );
@@ -81,6 +94,6 @@ class FeedbackViewAdmin extends StatelessWidget {
           ],
         ),
       ),
-    );
+    ));
   }
 }

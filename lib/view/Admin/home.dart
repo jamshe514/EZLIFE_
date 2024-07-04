@@ -224,7 +224,7 @@ class _AdminHomePageState extends State<AdminHomePage> {
                                                       FeedbackViewAdmin()));
                                         },
                                         child: const Text(
-                                          "View Complaints",
+                                          "View Feedback",
                                           style: TextStyle(
                                             color: Colors.black,
                                             fontSize: 25,
@@ -368,6 +368,17 @@ class _AdminHomePageState extends State<AdminHomePage> {
               ),
             ],
           ),
+          // Positioned(
+          //     left: ResHelper.w(context) * .30,
+          //     top: ResHelper.w(context) * .129,
+          //     child: Container(
+          //       width: ResHelper.w(context) * .140,
+          //       height: ResHelper.w(context) * .150,
+          //       decoration: BoxDecoration(
+          //           color: Colors.red,
+          //           image: DecorationImage(
+          //               image: AssetImage('assets/singlerrom.jpg'))),
+          //     ))
         ],
       ),
     );
